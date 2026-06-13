@@ -211,7 +211,7 @@ const ProductList = () => (
       <TextField source="id" label="ID" />
       <TextField source="name" label="Назва" sortable={false} />
       <TextField source="article" label="Артикул" sortable={false} />
-      <CategoryField label="Категорія" />
+      <CategoryField />
       <NumberField source="price" label="Ціна (грн)" sortable={false} />
       <DateField source="created_at" label="Дата" showTime />
       <BooleanField source="is_active" label="Активний" sortable={false} />
