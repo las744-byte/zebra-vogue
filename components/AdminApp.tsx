@@ -1,12 +1,12 @@
 'use client'
 
-import { Admin, Resource, List, Datagrid, TextField, NumberField, BooleanField, DateField, DataProvider, TopToolbar, SearchInput, useListContext, useRecordContext } from 'react-admin'
+import { Admin, Resource, List, Datagrid, TextField, NumberField, BooleanField, DateField, TopToolbar, SearchInput, useListContext, useRecordContext } from 'react-admin'
 import { useEffect, useState } from 'react'
 
 const apiUrl = '/api/admin'
 
-const dataProvider: DataProvider = {
-  getList: async (resource, params) => {
+const dataProvider: any = {
+  getList: async (resource: any, params: any) => {
     let url = `${apiUrl}/${resource}`
 
     const queryParams = new URLSearchParams()
@@ -50,12 +50,22 @@ const dataProvider: DataProvider = {
       total: json.total || products.length,
     }
   },
-  getOne: async (resource, params) => {
+  getOne: async (resource: any, params: any) => {
     const res = await fetch(`${apiUrl}/${resource}/${params.id}`)
     const json = await res.json()
     return { data: json.data }
   },
-  create: async (resource, params) => {
+  getMany: async (resource: any, params: any) => {
+    const res = await fetch(`${apiUrl}/${resource}`)
+    const json = await res.json()
+    return { data: json.data }
+  },
+  getManyReference: async (resource: any, params: any) => {
+    const res = await fetch(`${apiUrl}/${resource}`)
+    const json = await res.json()
+    return { data: json.data, total: json.total }
+  },
+  create: async (resource: any, params: any) => {
     const res = await fetch(`${apiUrl}/${resource}`, {
       method: 'POST',
       body: JSON.stringify(params.data),
@@ -64,7 +74,7 @@ const dataProvider: DataProvider = {
     const json = await res.json()
     return { data: json.data }
   },
-  update: async (resource, params) => {
+  update: async (resource: any, params: any) => {
     const res = await fetch(`${apiUrl}/${resource}/${params.id}`, {
       method: 'PUT',
       body: JSON.stringify(params.data),
@@ -73,9 +83,15 @@ const dataProvider: DataProvider = {
     const json = await res.json()
     return { data: json.data }
   },
-  delete: async (resource, params) => {
+  updateMany: async (resource: any, params: any) => {
+    return { data: [] }
+  },
+  delete: async (resource: any, params: any) => {
     await fetch(`${apiUrl}/${resource}/${params.id}`, { method: 'DELETE' })
     return { data: { id: params.id } as any }
+  },
+  deleteMany: async (resource: any, params: any) => {
+    return { data: [] }
   },
 }
 
