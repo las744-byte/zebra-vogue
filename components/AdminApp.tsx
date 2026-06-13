@@ -75,7 +75,7 @@ const dataProvider: DataProvider = {
   },
   delete: async (resource, params) => {
     await fetch(`${apiUrl}/${resource}/${params.id}`, { method: 'DELETE' })
-    return { data: { id: params.id } }
+    return { data: { id: params.id } as any }
   },
 }
 
