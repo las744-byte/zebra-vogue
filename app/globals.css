@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column !important;
+  }
+  
+  .trend-row {
+    flex-direction: column !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  
+  .trend-row > div {
+    min-height: 200px !important;
+  }
+}
