@@ -206,7 +206,7 @@ const ProductList = () => (
     aside={<FilterBar />}
     sort={{ field: 'created_at', order: 'DESC' }}
   >
-    <Datagrid rowClick={(id) => { window.location.href = `/admin/products/${id}` }}>
+    <Datagrid rowClick={(id) => { window.location.href = `/admin/products/${id}`; return false; }}>
       <ThumbnailField label="Фото" />
       <TextField source="id" label="ID" />
       <TextField source="name" label="Назва" sortable={false} />
