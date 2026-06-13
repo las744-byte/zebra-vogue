@@ -12,7 +12,9 @@
     "@supabase/supabase-js": "^2.108.0",
     "@swc/helpers": "^0.5.23",
     "next": "16.2.7",
+    "ra-data-simple-rest": "^5.14.7",
     "react": "19.2.4",
+    "react-admin": "^5.14.7",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
